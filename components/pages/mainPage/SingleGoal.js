@@ -1,12 +1,11 @@
 import {StyleSheet, View, Text, Image, Pressable} from "react-native";
-import basketImage from '../../../assets/basket.png';
 
 export const SingleGoal = ({singleGoal, delGoalHandler}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{singleGoal.text}</Text>
             <Pressable onPress={() => delGoalHandler(singleGoal.id)}>
-                <Image source={basketImage} style={styles.image}/>
+                <Image source={require('../../../assets/basket.png')} style={styles.image}/>
             </Pressable>
         </View>
     )

@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
         height: 75,
         paddingTop: 40,
         alignItems: 'center',
-        backgroundColor: 'coral',
+        // backgroundColor: 'coral',
+        backgroundColor: 'black',
     },
     title: {
         color: '#fff',

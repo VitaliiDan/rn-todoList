@@ -1,26 +1,32 @@
 import {useState} from "react";
-import {StyleSheet, Button, TextInput, View} from "react-native";
+import {StyleSheet, Button, TextInput, View, Modal} from "react-native";
 
-export const AppInput = ({addGoalHandler}) => {
+export const AppInput = ({addGoalHandler, isModalOpen, modalToggle}) => {
     const [goal, setGoal] = useState('');
 
     const addGoal = () => {
         if (goal.trim().length !== 0) {
             addGoalHandler(goal);
             setGoal('');
+            modalToggle();
         }
     }
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.inputWrapper_input}
-                placeholder={'Your course goal!'}
-                onChangeText={setGoal}
-                value={goal}
-            />
-            <Button title={'Add goal'} onPress={addGoal}/>
-        </View>
+        <Modal visible={isModalOpen} animationType='slide'>
+            <View style={styles.container}>
+                <TextInput
+                    style={styles.inputWrapper_input}
+                    placeholder={'Your course goal!'}
+                    onChangeText={setGoal}
+                    value={goal}
+                />
+                <Button title={'Add goal'} onPress={addGoal}/>
+            </View>
+            <View>
+                <Button title={'Close modal'} color={'red'} onPress={modalToggle}/>
+            </View>
+        </Modal>
     )
 }
 
